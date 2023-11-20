@@ -3,7 +3,9 @@ import styles from './App.module.css'
 import UserContext from "./Context/UserContext";
 import {useState} from "react";
 import Header from "./Components/Header/Header";
-import Autorization from "./Components/Autorization/Autorization";
+import {Route, Routes} from 'react-router-dom';
+import Login from "./Components/Authorization/Login/Login";
+import Registration from "./Components/Authorization/Registration/Registration";
 // import
 
 function App() {
@@ -17,19 +19,22 @@ function App() {
   //       })
   // }, []);
     const [user,setUser]=useState(false)
-    const [registerIsOpen,setRegisterIsOpen] = useState(false)
+    // const [registerIsOpen,setRegisterIsOpen] = useState(false)
 
-    const successAutorization = (user) =>{
+    const successAuthorization = (user) =>{
         setUser(user)
-        setRegisterIsOpen(false)
+        // setRegisterIsOpen(false)
     }
 
 
   return (
     <div className={styles.app}>
-        <UserContext.Provider value={{user:user,successAutorization}}>
-            {registerIsOpen?(<Autorization />):(
-            <Header setRegisterIsOpen={setRegisterIsOpen}/>)}
+        <UserContext.Provider value={{user:user,successAuthorization}}>
+            <Routes>
+                <Route path='/' element={<Header/>} />
+                <Route path='/login' element={<Login />}/>
+                <Route path='/registration' element={<Registration/>}/>
+            </Routes>
         </UserContext.Provider>
     </div>
   );

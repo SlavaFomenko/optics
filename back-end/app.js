@@ -5,7 +5,7 @@ const fs = require('fs');
 const cors = require('cors');
 
 const connection = db.createConnection({
-    host: 'localhost',
+    host: 'localhost', // Укажите ваш хост базы данных
     user: 'root',
     password: 'FomenkoViacheslav909011',
     database: 'OSO',
@@ -63,6 +63,7 @@ app.post('/check/user/validate',(req, res)=>{
 app.get('/get_image', (req, res) => {
     const imageName = '1.jpg';
     const imagePath = path.join(imageDir, imageName);
+    app.send({'hello':'hello'})
 
     fs.access(imagePath, fs.constants.F_OK, (err) => {
         if (err) {

@@ -59,6 +59,11 @@
     transition: all 0.2s ease-in-out;
     color: black;
 }
+
+.login_form span > a{
+    cursor: pointer;
+    color: #159be1;
+}
 .login_form button:hover{
     color: white;
     background-color: black;
