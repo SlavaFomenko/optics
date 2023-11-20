@@ -28,7 +28,7 @@ function Header({setRegisterIsOpen}) {
                     <div className={styles.user}>
                         {context.user?
                             <span>{context.user.first_name} {context.user.last_name}</span>:
-                            <span onClick={()=>setRegisterIsOpen(true)}>Login</span>}
+                            <a href={'/login'}>Login</a>}
                     </div>
                 </header>
     );

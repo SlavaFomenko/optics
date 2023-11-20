@@ -2,13 +2,18 @@ import React, {useContext, useState} from 'react';
 import styles from './Login.module.css'
 import UserContext from "../../../Context/UserContext";
 
-const Login = () => {
+const Login = (props) => {
     const [login,setLogin] = useState('')
     const [password,setPassword]=useState('')
     const [msgFail,setMsgFail] = useState(false)
     const context = useContext(UserContext)
 
     const sendDataToServer = () => {
+
+        // fetch('/get_image')
+        //     .then(r=>r.text())
+        //     .then(data=>console.log(data))
+        //     .catch(e=>console.log(e))
 
         if(password === '' || login === ''){
             return
@@ -33,7 +38,7 @@ const Login = () => {
                 const response = JSON.parse(xhr.responseText)
                 if(response.status === 'success'){
                     console.log(response.user)
-                    context.successAutorization(response.user)
+                    context.successAuthorization(response.user)
                 }
                 if(response.status === 'faild'){
                     setMsgFail(true)
@@ -62,7 +67,7 @@ const Login = () => {
                         <input type={'password'} value={password} onChange={(e) => setPassword(e.target.value)} placeholder={'Пароль'}/>
                     </div>
                     <button type="button" onClick={sendDataToServer}>Увійти</button>
-                    <span>Ще немає аккаунту?<br/><a href={"@"}>Зареєструватись!</a></span>
+                    <span>Ще немає аккаунту?<br/><a href={'/registration'}>Зареєструватись!</a></span>
                 </form>
             </main>
         </section>

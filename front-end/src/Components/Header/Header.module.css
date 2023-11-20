@@ -56,10 +56,11 @@
     gap: 120px;
 }
 
-.user {
+.user,.user a {
     width: auto;
     color: white;
+    text-decoration: none;
 }
-.user > span{
+.user > span,a{
     cursor: pointer;
 }
